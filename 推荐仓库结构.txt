@@ -1,0 +1,30 @@
+your-company-handbook/
+├── README.md                      # 仓库说明、使用指南、维护者说明
+├── CONTRIBUTING.md               # 如何参与文档编写/修订的说明
+├── LICENSE                       # 文档版权协议（建议 CC-BY 4.0）
+│
+├── .github/
+│   ├── workflows/                # GitHub Actions 自动化，如文档格式检查等
+│   └── ISSUE_TEMPLATE/          # 用于建议修改规范或提交问题
+│
+├── docs/                         # 正文目录：公司各部门规范
+│   ├── 技术部安全规范.md
+│   ├── SALES_DEPARTMENT_GUIDELINES.md
+│   ├── LEGAL_DEPARTMENT_GUIDELINES.md
+│   ├── FINANCE_DEPARTMENT_GUIDELINES.md
+│   ├── STARTUP_ADVISOR_MANUAL.md
+│   ├── HR_ADMIN_GUIDELINES.md
+│   └── ...
+│
+├── templates/                    # 通用模板（可签署文件）
+│   ├── 员工入职协议模板.md
+│   ├── 技术外包合同模板.md
+│   ├── 客户服务协议.md
+│   └── 保密协议(NDA).md
+│
+├── policies/                     # 运营制度类文档（可后续添加）
+│   ├── 数据安全政策.md
+│   ├── 远程办公制度.md
+│   └── 员工绩效评估制度.md
+│
+└── archive/                      # 历史版本/已废弃规范归档
