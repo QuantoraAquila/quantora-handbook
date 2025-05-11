@@ -44,8 +44,11 @@ cd project-name
 ### 3. 创建开发分支（推荐）
 
 ```bash
-git checkout -b feature/frontend-home
+git checkout develop           # 确保从 develop 分支出发
+git checkout -b feature/xxx    # 基于 develop 创建功能分支
 ```
+
+> 📌 `git checkout -b` 命令会基于当前所在分支创建新分支，注意确保起点正确。
 
 ---
 
@@ -113,6 +116,7 @@ git push origin xxx     # 推送当前分支
 * 初期可安排一名技术负责人进行代码审核和合并管理
 * Git 不会跟踪空文件夹，若需保留空目录可添加 `.gitkeep` 文件（空文本文件）
 * 可使用 `git ls-files` 命令查看当前被 Git 跟踪的所有文件列表
+* 合并分支时，若目标分支尚无提交，可触发 Fast-forward 合并（主分支直接推进到开发分支），不会产生冲突；否则需逐个处理冲突文件
 
 ---
 
