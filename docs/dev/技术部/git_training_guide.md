@@ -1,0 +1,102 @@
+# Git 协作开发培训资料
+
+## 一、上传前的标准操作流程（本地已有仓库）
+
+```bash
+git status             # 1. 查看哪些文件改动了
+git diff               # 2. 可选：查看改动的具体内容
+git add .              # 3. 添加所有改动文件到暂存区
+git commit -m "说明"   # 4. 提交到本地 Git 版本记录
+git push               # 5. 上传改动到远程 GitHub 仓库
+```
+
+---
+
+## 二、首次参与项目开发（克隆 + 本地开发）
+
+### 1. 克隆远程仓库（只做一次）
+
+```bash
+git clone https://github.com/QuantoraOrg/project-name.git
+```
+
+### 2. 进入项目目录
+
+```bash
+cd project-name
+```
+
+### 3. 创建开发分支（推荐）
+
+```bash
+git checkout -b feature/frontend-home
+```
+
+---
+
+## 三、日常协作开发循环流程
+
+```bash
+git pull                # 拉取远程最新代码
+git checkout -b xxx     # 开新分支（如未创建）
+# 本地修改代码...
+git add .
+git commit -m "说明"
+git push origin xxx     # 推送当前分支
+```
+
+---
+
+## 四、多人协作建议
+
+| 操作命令                  | 说明                    |
+| --------------------- | --------------------- |
+| `git pull`            | 每次开发前先拉远程代码，避免代码冲突    |
+| `git checkout -b xxx` | 创建新功能分支，避免污染主分支       |
+| `git push origin xxx` | 推送当前分支到 GitHub        |
+| GitHub Pull Request   | 功能完成后发起合并请求，由主分支维护者审批 |
+
+---
+
+## 五、推荐分支命名规范
+
+* `feature/xxx`：开发新功能
+* `fix/xxx`：修复 bug
+* `hotfix/xxx`：紧急修复
+* `docs/xxx`：文档更新
+* `test/xxx`：测试相关代码
+
+---
+
+## 六、协作流程图
+
+```
+   GitHub 仓库 ← (git clone)
+        ↓
+   本地开发环境 (VSCode / PyCharm)
+        ↓
+   git pull ← 获取最新代码
+        ↓
+   git checkout -b xxx ← 开新分支
+        ↓
+   编码 & 测试
+        ↓
+   git add .
+   git commit -m "说明"
+        ↓
+   git push origin xxx ← 推送分支
+        ↓
+   GitHub 发起 Pull Request / 审核合并
+```
+
+---
+
+## 七、补充建议
+
+* 所有协作者需具备 GitHub 账号，加入公司组织
+* 推荐使用 VS Code、GitHub Desktop、命令行结合使用
+* 初期可安排一名技术负责人进行代码审核和合并管理
+
+---
+
+如需配套视频教程、命令速查表、或可视化图解，请联系技术负责人安排。
