@@ -8,7 +8,22 @@ git diff               # 2. 可选：查看改动的具体内容
 git add .              # 3. 添加所有改动文件到暂存区
 git commit -m "说明"   # 4. 提交到本地 Git 版本记录
 git push               # 5. 上传改动到远程 GitHub 仓库
+git ls-files           # 6. 查看当前已被 Git 跟踪的文件列表（可选）
 ```
+
+> 💡 **建议：添加 `.gitignore` 文件忽略本地环境配置文件**
+>
+> 在项目根目录创建 `.gitignore` 文件，添加以下内容忽略 IDE 文件夹（如 `.idea/`）：
+>
+> ```bash
+> .idea/
+> *.log
+> __pycache__/
+> *.pyc
+> .DS_Store
+> ```
+>
+> 若某些文件已被 Git 跟踪，可执行 `git rm -r --cached .idea` 将其从版本控制中移除，再提交。
 
 ---
 
