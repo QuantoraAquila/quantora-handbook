@@ -111,6 +111,8 @@ git push origin xxx     # 推送当前分支
 * 所有协作者需具备 GitHub 账号，加入公司组织
 * 推荐使用 VS Code、GitHub Desktop、命令行结合使用
 * 初期可安排一名技术负责人进行代码审核和合并管理
+* Git 不会跟踪空文件夹，若需保留空目录可添加 `.gitkeep` 文件（空文本文件）
+* 可使用 `git ls-files` 命令查看当前被 Git 跟踪的所有文件列表
 
 ---
 
