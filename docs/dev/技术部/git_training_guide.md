@@ -1,5 +1,24 @@
 # Git 协作开发培训资料
 
+## 配置git仓库
+```bash
+git init # 这将会在当前项目目录中创建一个 .git 文件夹，表示这个目录是一个 Git 仓库。
+
+git remote add origin <远程仓库 URL> 
+#远程仓库 URL 通常是类似这样的格式：
+#HTTPS：https://github.com/your-username/your-repository.git
+#SSH：git@github.com:your-username/your-repository.git
+#例如，如果你在 GitHub 上创建了一个仓库 my-project，并且你的 GitHub 用户名是 your-username，那么远程仓库 URL 就是：
+git remote add origin https://github.com/your-username/my-project.git
+#如果你使用 SSH 连接而不是 HTTPS，确保你已经配置了 SSH 密钥。
+
+#你可以使用以下命令来确认本地仓库是否已经成功连接到远程仓库：
+git remote -v
+#这将显示远程仓库的 URL，例如：
+#origin  https://github.com/QuantoraAquila/auto-trade-system.git (fetch)
+#origin  https://github.com/QuantoraAquila/auto-trade-system.git (push)
+```
+git remote add origin
 ## 一、上传前的标准操作流程（本地已有仓库）
 
 ```bash
