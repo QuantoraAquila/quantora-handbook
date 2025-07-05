@@ -354,3 +354,65 @@ run();
 7. 综合实践：制作 Todo 应用、登录页、个人简历页
 
 > 制作：ChatGPT x Quantora
+
+
+## 在 Node.js 中，每个 .js 文件本质上被包装在一个函数中，系统自动为你注入了这些变量：
+```
+js
+
+(function(exports, require, module, __filename, __dirname) {
+  // 你的代码在这里
+})
+```
+也就是说：
+
+- exports 是 module.exports 的一个快捷引用
+
+- 所以你可以用 exports.foo = bar 来导出内容
+
+但也有个  **常见坑 ⛔**：
+
+```
+js
+
+exports = { foo: 123 }; // ❌ 这样会失效（只是修改了 exports 引用，不再指向 module.exports）
+```
+正确做法是：
+```
+js
+
+module.exports = { foo: 123 }; // ✅ 替换整个导出对象
+```
+## 🚩你看到的代码：
+```
+js
+
+exports.StrictMode = REACT_STRICT_MODE_TYPE;
+```
+意思是：
+
+    把 REACT_STRICT_MODE_TYPE 这个值（通常是一个特殊的 Symbol 或对象）挂在当前模块导出的 StrictMode 属性上。
+
+这样别的模块就能使用：
+
+    js
+   
+    const React = require('react');
+    React.StrictMode;
+## ✅ 小结
+
+| 写法                     | 说明                             |
+| ---------------------- | ------------------------------ |
+| `exports.foo = bar`    | 导出一个变量或函数（常用于模块中）              |
+| `module.exports = obj` | 导出整个对象（更常见于库的主入口）              |
+| `exports = obj`        | ❌ 无效，会断开与 `module.exports` 的连接 |
+
+
+如果你用的是 ES Modules（现代写法），就会用 export：
+
+    js
+
+    // ES Modules 写法
+    export const foo = 123;
+    export default function () {}
+而 CommonJS 的 exports.xxx = yyy 是以前在 Node.js 中最常用的写法，现在也仍然广泛存在于 React 底层源码和老的库中。
