@@ -50,7 +50,7 @@
 | 对象结构             | `{ key: type }`                 | `let obj: { name: string }`              |
 | 元组（固定结构）     | `[number, string]`              | `let t: [number, string] = [1, "a"]`     |
 | 函数类型（简写）     | `() => returnType`              | `let f: () => void`                      |
-| 联合类型             | `type1 | type2`                 | `string | number`                         |
+| 联合类型             | `type1 \| type2`                 | `string \| number`                         |
 | 交叉类型             | `type1 & type2`                 | `{id: number} & {name: string}`          |
 | 可选字段             | `key?: type`                    | `{ age?: number }`                       |
 | 只读字段             | `readonly key: type`            | `{ readonly id: number }`                |
