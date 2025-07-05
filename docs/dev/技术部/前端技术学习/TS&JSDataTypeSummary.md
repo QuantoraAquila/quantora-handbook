@@ -26,7 +26,7 @@
 | 无返回值函数   | `void`                       | `function log(): void {}`    | 表示函数无返回                 |
 | 永不返回       | `never`                      | `throw new Error()`          | 错误、死循环                   |
 | 元组           | `[type1, type2, ...]`        | `[number, string]`           | 固定结构的数组                 |
-| 联合类型       | `A | B`                      | `string | number`            | 可为多个类型之一               |
+| 联合类型       | `A \| B`                      | `string \| number`            | 可为多个类型之一               |
 | 交叉类型       | `A & B`                      | `{a: string} & {b: number}`  | 类型合并                       |
 | 类型别名       | `type Name = ...`            | `type ID = string | number`  | 自定义类型名                   |
 | 接口           | `interface`                  | `interface User { id: number }` | 描述对象结构               |
