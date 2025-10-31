@@ -62,3 +62,55 @@ TypeScript 的标准库主要是 类型声明文件（.d.ts），提供对 JavaS
 - 语言核心（Language Core）：包括语法、关键字、数据类型、控制结构等，是 TypeScript 语言的基础部分，所有 TypeScript 引擎都必须实现。
 
 - 标准库（Standard Library）：包括内置对象和方法，如 Array、Object、String、Promise 等，是 TypeScript 语言的标准库，提供了丰富的功能支持。
+
+## TypeScript（TS）的大部分版本变动确实都算在语言核心，原因主要有以下几点：
+
+### 1. TypeScript 是 JavaScript 的超集
+
+- TS 的目标就是在 JavaScript 的语言核心上加上类型系统和语法扩展。
+
+- 它并没有像 Python/C 一样自带庞大的 标准库。
+
+- TS 程序运行时依赖的是 JS 的标准库（ECMAScript + DOM API + Node.js API 等），所以它自身不需要维护独立的“标准库层”。
+
+### 2. 变动主要是语法和类型系统
+
+TS 的每个大版本更新，几乎都是：
+
+- 类型系统增强：
+
+    - 新的类型运算符（infer、keyof、satisfies）
+
+    - 严格模式改进（strictNullChecks、exactOptionalPropertyTypes）
+
+    - 模板字面量类型（Template Literal Types）
+
+- 语法兼容增强：
+
+    - 跟进 ECMAScript 新语法（如 ES6 的 async/await、ES2020 的可选链 ?.）
+
+    - 提供类型推导/检查机制
+
+- 工具性特性：
+
+    - 装饰器（Decorators）
+
+    - 模块系统（import/export 的类型支持）
+
+    - 这些都属于 语言核心 的扩展，而不是库函数。
+
+### 3. “标准库”由声明文件定义
+
+TS 没有独立的运行时库，所谓的“库”其实就是一堆 **类型声明文件（.d.ts）**：
+
+- lib.d.ts → 对应 ECMAScript 标准库（如 Array, Map, Promise）
+
+- dom.d.ts → 浏览器环境 API（如 document, HTMLElement）
+
+- node.d.ts（第三方提供） → Node.js API
+
+这些 .d.ts 文件只是在编译时提供类型检查，不会影响运行时。也就是说：
+
+- TS 标准库的更新几乎等于 JS 标准库的更新，所以 TS 自己的“库改动”非常少。
+
+- 真正的变动还是体现在 语言核心（类型系统 + 语法支持）。
