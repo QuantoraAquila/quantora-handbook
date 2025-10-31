@@ -18,10 +18,19 @@ git remote -v
 #origin  https://github.com/QuantoraAquila/auto-trade-system.git (fetch)
 #origin  https://github.com/QuantoraAquila/auto-trade-system.git (push)
 ```
-git remote add origin
+实用命令：
+
+| 目的          | 命令                       | 说明                          |
+| ----------- | ------------------------ | --------------------------- |
+| 查看所有远程仓库    | `git remote -v`          | 看是否有 `origin`、`develop` 等远程 |
+| 查看当前分支的上游分支 | `git branch -vv`         | 看当前分支关联哪个远程分支               |
+| 查看远程分支列表    | `git branch -r`          | 查看所有远程分支                    |
+| 查看详细远程信息    | `git remote show origin` | 详细显示 `origin` 的分支跟踪关系       |
+
 ## 一、上传前的标准操作流程（本地已有仓库）
 
 ```bash
+git remote -v          # 查看所有远程仓库,同时判断是否连接远程仓库
 git status             # 1. 查看哪些文件改动了
 git diff               # 2. 可选：查看改动的具体内容
 git add .              # 3. 添加所有改动文件到暂存区
