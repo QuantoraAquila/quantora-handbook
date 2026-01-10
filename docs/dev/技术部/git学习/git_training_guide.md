@@ -77,7 +77,60 @@ git checkout -b feature/xxx    # 基于 develop 创建功能分支
 ```
 
 > 📌 `git checkout -b` 命令会基于当前所在分支创建新分支，注意确保起点正确。
+### 4. 合并当前分支到主分支
+假设当前你在一个开发分支上，比如：
+```
+feature/login
+```
 
+你想把它合并到主分支 main。
+
+✅ 步骤：
+
+1️⃣ 切换到主分支：
+```
+git switch main
+```
+
+（如果你的主分支叫 master，改成 git switch master）
+
+2️⃣ 更新主分支（保持最新）：
+```
+git pull origin main
+```
+
+👉 拉取远程的最新提交，避免合并冲突。
+
+3️⃣ 执行合并：
+```
+git merge feature/login
+```
+
+这会把 feature/login 的代码合并到当前分支（此时是 main）。
+
+4️⃣ （可选）解决冲突：
+
+* 如果出现冲突，Git 会提示哪些文件冲突；
+
+* 打开冲突文件，手动修改；
+
+* 然后：
+```
+git add .
+git commit
+```
+
+5️⃣ 推送到远程主分支：
+```
+git push origin main
+```
+🧩 快速示例
+```
+git switch main
+git pull origin main
+git merge feature/login
+git push origin main
+```
 ---
 
 ## 三、日常协作开发循环流程

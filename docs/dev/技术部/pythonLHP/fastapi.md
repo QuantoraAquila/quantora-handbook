@@ -359,3 +359,69 @@ def custom_openapi():
 
 app.openapi = custom_openapi
 ```
+
+### 4、典型 API 案例
+#### 🎯 4.1 用户注册与登录 API
+```
+from fastapi import FastAPI, HTTPException, Depends
+from pydantic import BaseModel, EmailStr
+
+app = FastAPI()
+
+fake_db = {}
+
+class User(BaseModel):
+    email: EmailStr
+    password: str
+
+@app.post("/register")
+async def register(user: User):
+    if user.email in fake_db:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    fake_db[user.email] = user.password
+    return {"message": "Registration successful"}
+
+@app.post("/login")
+async def login(user: User):
+    if fake_db.get(user.email) != user.password:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    return {"message": "Login successful"}
+```
+#### ⚡ 4.2 异步数据库访问（asyncpg + SQLAlchemy ORM）
+```
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+from fastapi import Depends
+
+DATABASE_URL = "postgresql+asyncpg://user:pass@localhost/db"
+engine = create_async_engine(DATABASE_URL)
+SessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+Base = declarative_base()
+
+async def get_db():
+    async with SessionLocal() as session:
+        yield session
+```
+#### 📡 4.3 WebSocket 实时推送
+```
+from fastapi import WebSocket
+
+@app.websocket("/ws")
+async def websocket_endpoint(ws: WebSocket):
+    await ws.accept()
+    while True:
+        data = await ws.receive_text()
+        await ws.send_text(f"Received: {data}")
+```
+### 3、自动文档与测试
+
+访问自动生成文档：
+```
+📘 Swagger UI: http://127.0.0.1:8000/docs
+
+📕 ReDoc: http://127.0.0.1:8000/redoc
+```
+命令行启动：
+```
+uvicorn main:app --reload
+```
